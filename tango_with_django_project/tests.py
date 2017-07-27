@@ -248,5 +248,3 @@ class Chapter7ViewTests(TestCase):
 
 
     # test if the add_page.html template exists.
-
-# Create your tests here.
