@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from rango.models import Category,Page
+from rango.forms import CategoryForm
+from django.db import models
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5]
@@ -23,4 +25,22 @@ def show_category(request, category_name_slug):
         context_dict['pages'] = None
         context_dict['category'] = None
     return render(request, 'rango/category.html',context_dict)
+def add_category(request):
+    form = CategoryForm()
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        
+        if form.is_valid():
+            try:
+                form.save(commit=True)
+                return index(request)
+            except models.base.ValidationError:
+                print('what?')
+        else:
+            print(form.errors)
+    return render(request, 'rango/add_category.html', {'form':form})
+
+
+
+
 

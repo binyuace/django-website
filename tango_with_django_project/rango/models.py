@@ -10,6 +10,7 @@ class Category(models.Model):
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
+        self.validate_unique()
         super(Category,self).save(*args, **kwargs)
 
     class Meta:
