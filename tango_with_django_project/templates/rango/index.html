@@ -9,9 +9,34 @@
     <body>
         <h1>Rango says</h1>
         hello world! <strong>{{ boldmessage }}</strong><br>
-        <a href="rango/about/">About</a>
+        <div>
+        <h2>Most Liked Categories</h2>
+        {% if categories %}
+        <ul>
+            {% for category in categories%}
+                <li><a href='/rango/category/{{ category.slug }}' >{{category.name}}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>no categories to show</p>
+        {% endif %}
+        </div>
+        <h2>Most Liked Pages</h2>
+         <div>
+        {% if pages %}
+        <ul>
+            {% for page in pages%}
+                <li><a href='{{ page.url }}' >{{page.title}}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>no pages to show</p>
+        {% endif %}
+        </div>
+        <div>
+        <a href="/rango/about/">About</a><br>
         <img src= " {% static "images/guitar.jpg" %}" alt = 'guitar'>
-        <br>
-    </body>
+        </div>
+     </body>
 
 </html>
