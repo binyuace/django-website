@@ -1,8 +1,13 @@
-<!DOCTYPE html>
-<html> <head>
-<title>Rango</title> </head>
-<body>
-<a href="{% url 'index' %}">HOME</a>
+
+
+{% extends 'base.html' %}
+
+{% block title %}Add Category{% endblock %}
+
+
+{% block body_block %}
+
+
 {% if user.is_authenticated %}
 	<h1>Add a Category</h1> <div>
 	<form id="category_form" method="post" action="/rango/add_category/"> {% csrf_token %}
@@ -14,9 +19,9 @@
 	                {{ field.help_text }}
 	                {{ field }}
 	{% endfor %}
-<input type="submit" name="submit" value="Create Category" /></form>
+	<input type="submit" name="submit" class = 'btn btn-info' value="Create Category" /></form>
 {% else %}
-<a href="{% url 'register' %}">Register NOW</a>
+	<a href="{% url 'register' %}">Register NOW</a>
 {%endif%}
-</div> </body>
-</html>
+
+{% endblock %}
