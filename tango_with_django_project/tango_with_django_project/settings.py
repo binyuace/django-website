@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
-                             
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango.apps.RangoConfig',
+    'registration'
 ]
 
-                             
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -130,9 +131,14 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_DIR = MEDIA_ROOT
 
 SESSION_COOKIE_AGE = 1200000
 
+REGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/rango/'
+LOGIN_URL = '/accounts/login/'
