@@ -8,7 +8,7 @@ class CategoryForm(forms.ModelForm):
     views = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
     likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-    
+
     class Meta:
         model = Category
         fields = ('name','slug')
@@ -31,17 +31,16 @@ class PageForm(forms.ModelForm):
         if url and not url.startswith('http://'):
             url = 'http://'+url
             cleaned_data['url'] = url
-        
+
             return cleaned_data
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget = forms.PasswordInput())
-    
+
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
 class UserProfileForm(forms.ModelForm):
+
     class Meta:
         model = UserProfile
         fields = ('website', 'picture')
-
-

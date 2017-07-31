@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block body_block %}
+{%if user.is_authenticated %}
+<h2>{{user.username}}</h2>
+{% if user_profile %}
+{% csrf_token %}
+<h2>Your website</h2>
+<p><a href ='{{user_profile.website}}'>{{user_profile.website}}</a></p>
+<h2>Your image</h2>
+<p><img src = '{{MEDIA_URL}}{{user_profile.picture.name}}' style='height: 60px;width:60px;'></p>
+{%endif%}
+
+
+
+
+{%endif%}
+
+
+{% endblock %}

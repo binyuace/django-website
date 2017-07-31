@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% if user.is_authenticated %}
+{% block body_block %}
+<form role="form"  method="post" action=".">
+                {% csrf_token %}
+
+<h2 class="form-signin-heading">complete your profile Here</h2>
+
+<div class="form-group" >
+ <p class="required"> <label for="id_website">Website:</label>
+     <input class="form-control"  id="id_website"  name="website" type="url"  placeholder="Enter website"/></p>
+</div>
+<div class="form-group">
+    <p class="required"><label for="id_picture">Picture:</label>
+        <input class="form-control" id="id_picture" name="picture" type="file" placeholder="Upload" accept="image/*"/></p>
+</div>
+<input type="text" name="user_name" value="{{user.username}}" style="display:none;">
+
+<button type="submit" class="btn btn-default">Submit</button>
+
+        </form>
+{% endblock %}
+{%endif%}

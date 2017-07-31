@@ -1,0 +1,13 @@
+
+   {% if pages %}
+        <ul class='list-group'>
+            <div id = 'pages'>
+            {% for page in pages %}
+             <li class ='list-grounp-item'><a href="{% url 'goto' %}?page_id={{page.id}}">{{ page.title }}</a> <span> {{page.views}} views</span></li>
+            {% endfor %}
+                
+            {% else %}
+                <strong>There are no categories present.</strong>
+            </div>
+        </ul>
+    {% endif %}             
